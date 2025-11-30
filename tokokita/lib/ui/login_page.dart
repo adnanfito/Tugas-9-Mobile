@@ -4,6 +4,7 @@ import 'package:tokokita/helpers/user_info.dart';
 import 'package:tokokita/ui/produk_page.dart';
 import 'package:tokokita/ui/registrasi_page.dart';
 import 'package:tokokita/widget/warning_dialog.dart';
+import 'package:tokokita/widget/success_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -91,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
 
-    print('🔵 [LoginPage] Starting login...');
+    print('🔵 [LoginPage] Starting login.. .');
 
     LoginBloc.login(
       email: _emailTextboxController.text,
@@ -117,10 +118,22 @@ class _LoginPageState extends State<LoginPage> {
             await Future.delayed(const Duration(milliseconds: 500));
 
             if (mounted) {
-              print('🟣 [LoginPage] Navigating to ProdukPage...');
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const ProdukPage()),
+              // ✅ Tampilkan dialog success dengan callback untuk navigate
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (BuildContext context) => SuccessDialog(
+                  description: "Login Berhasil",
+                  okClick: () {
+                    print('🟣 [LoginPage] Navigating to ProdukPage.. .');
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProdukPage(),
+                      ),
+                    );
+                  },
+                ),
               );
             }
           } catch (e) {
