@@ -37,41 +37,6 @@ Aplikasi Flutter modern untuk manajemen toko online dengan fitur lengkap Login, 
 
 ---
 
-## 📋 Struktur Proyek
-
-```
-tokokita/
-├── lib/
-│   ├── main.dart                 # Entry point aplikasi
-│   ├── bloc/                     # Business Logic Layer
-│   │   ├── login_bloc.dart       # Logic login
-│   │   ├── registrasi_bloc.dart  # Logic registrasi
-│   │   ├── produk_bloc.dart      # Logic CRUD produk
-│   │   └── logout_bloc.dart      # Logic logout
-│   ├── ui/                       # User Interface Layer
-│   │   ├── login_page.dart       # Halaman login
-│   │   ├── registrasi_page.dart  # Halaman registrasi
-│   │   ├── produk_page.dart      # Halaman daftar produk
-│   │   ├── produk_form.dart      # Form tambah/edit produk
-│   │   └── produk_detail.dart    # Detail produk
-│   ├── model/                    # Data Models
-│   │   ├── login.dart
-│   │   ├── registrasi.dart
-│   │   └── produk.dart
-│   ├── helpers/                  # Utility Functions
-│   │   ├── api.dart              # HTTP Client
-│   │   ├── api_url.dart          # API Endpoints
-│   │   ├── app_exception.dart    # Exception handling
-│   │   └── user_info.dart        # Local storage
-│   └── widget/                   # Custom Widgets
-│       ├── success_dialog.dart   # Success notification
-│       └── warning_dialog.dart   # Error notification
-├── pubspec.yaml                  # Project dependencies
-└── README.md                     # Documentation
-```
-
----
-
 ## 🚀 Setup & Installation
 
 ### Prerequisites
@@ -171,10 +136,7 @@ class _LoginPageState extends State<LoginPage> {
 
 Pengguna mengisikan email dan password mereka.
 
-```dart
-// Email: user@example.com
-// Password: password123
-```
+
 
 **Validasi Input:**
 
@@ -182,7 +144,8 @@ Pengguna mengisikan email dan password mereka.
 - ✅ Password tidak boleh kosong
 - ✅ Minimal 1 karakter untuk keduanya
 
----
+---<img width="623" height="881" alt="Screenshot 2025-11-30 201147" src="https://github.com/user-attachments/assets/cf2d6866-0eab-4bc5-9ab9-622b9c03f7f1" />
+
 
 ### **Step 3️⃣ : Klik Tombol Login**
 
@@ -206,9 +169,12 @@ Ketika tombol diklik, form akan divalidasi terlebih dahulu sebelum mengirim requ
 
 ---
 
+
+
 ### **Step 4️⃣ : Kirim Request ke Backend**
 
 **File:** `lib/bloc/login_bloc.dart`
+<img width="627" height="867" alt="Screenshot 2025-11-30 201156" src="https://github.com/user-attachments/assets/8195fa66-7941-4d00-8bed-58e667cedf82" />
 
 ```dart
 class LoginBloc {
@@ -494,6 +460,8 @@ class SuccessDialog extends StatelessWidget {
 
 ### **Step 7️⃣ : Navigasi ke Halaman Produk**
 
+<img width="624" height="878" alt="Screenshot 2025-11-30 201223" src="https://github.com/user-attachments/assets/1b827d0f-edd2-4f08-b2d2-296b3e330181" />
+
 Setelah login berhasil, aplikasi secara otomatis navigasi ke halaman daftar produk.
 
 ```dart
@@ -756,6 +724,8 @@ void _submit() {
 
 ### **A. READ (Tampilkan Daftar Produk)**
 
+<img width="624" height="878" alt="Screenshot 2025-11-30 201223" src="https://github.com/user-attachments/assets/3d1671ad-8a56-402e-9f7f-bcc764f46bea" />
+
 #### **Step 1️⃣ : Halaman Daftar Produk**
 
 **File:** `lib/ui/produk_page.dart`
@@ -938,9 +908,11 @@ class ItemProduk extends StatelessWidget {
 
 ### **B. CREATE (Tambah Produk Baru)**
 
+
+
 #### **Step 1️⃣ : Halaman Form Tambah Produk**
 
-**File:** `lib/ui/produk_form.dart`
+**File:** `lib/ui/produk_form.dart`<img width="633" height="875" alt="Screenshot 2025-11-30 201249" src="https://github.com/user-attachments/assets/6f15eccd-394b-4492-a020-50182b2a03e0" />
 
 ```dart
 class ProdukForm extends StatefulWidget {
@@ -1179,9 +1151,13 @@ Authorization: Bearer <token>
 }
 ```
 
+<img width="630" height="877" alt="Screenshot 2025-11-30 201255" src="https://github.com/user-attachments/assets/713c4654-fcd2-446d-972c-52bfeaeb5fd8" />
+
 ---
 
 ### **C. UPDATE (Edit Produk)**
+
+<img width="621" height="888" alt="Screenshot 2025-11-30 201306" src="https://github.com/user-attachments/assets/67125e37-6b5d-425a-9923-e1479d6a944a" />
 
 #### **Step 1️⃣ : Akses Detail Produk**
 
@@ -1252,6 +1228,8 @@ class _ProdukDetailState extends State<ProdukDetail> {
 ```
 
 #### **Step 2️⃣ : Form Edit dengan Pre-filled Data**
+
+<img width="627" height="885" alt="Screenshot 2025-11-30 201317" src="https://github.com/user-attachments/assets/da7bed3e-128a-40ce-8f44-dc680cf3e60d" />
 
 Saat user klik tombol EDIT, form akan ter-isi otomatis dengan data produk lama.
 
@@ -1371,9 +1349,13 @@ Authorization: Bearer <token>
 }
 ```
 
+<img width="623" height="888" alt="Screenshot 2025-11-30 201323" src="https://github.com/user-attachments/assets/9bab0052-4201-4767-b2cc-df11c149e8fc" />
+
 ---
 
 ### **D. DELETE (Hapus Produk)**
+
+<img width="625" height="882" alt="Screenshot 2025-11-30 201332" src="https://github.com/user-attachments/assets/596af59d-2f04-4e13-8465-a714ca84a1a3" />
 
 #### **Step 1️⃣ : Confirmation Dialog**
 
@@ -1457,11 +1439,14 @@ DELETE /produk/1
 Authorization: Bearer <token>
 ```
 
+<img width="623" height="885" alt="Screenshot 2025-11-30 201338" src="https://github.com/user-attachments/assets/56dc97af-a122-4719-89dc-658d2fad7b3e" />
+
 ---
 
 ### **E. LOGOUT**
 
 **File:** `lib/bloc/logout_bloc.dart`
+
 
 ```dart
 class LogoutBloc {
