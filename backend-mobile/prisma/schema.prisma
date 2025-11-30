@@ -1,0 +1,48 @@
+// Ini adalah file schema.prisma Anda
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Tentukan koneksi database Anda
+// (gunakan "mysql", "postgresql", "sqlite", "sqlserver", atau "mongodb")
+datasource db {
+  provider = "postgresql" // Saya asumsikan MySQL berdasarkan sintaks AUTO_INCREMENT
+  url      = env("DATABASE_URL")
+}
+
+// --- Model Anda Dimulai Di Sini ---
+
+// Model untuk tabel 'member'
+model Member {
+  id       Int     @id @default(autoincrement())
+  nama     String  // <-- TAMBAHKAN BARIS INI
+  email    String  @unique
+  password String
+  
+  tokens   MemberToken[]
+
+  @@map("member")
+}
+
+// Model untuk tabel 'member_token'
+model MemberToken {
+  id        Int    @id @default(autoincrement())
+  auth_key  String
+  
+  // Relasi: Token ini dimiliki oleh satu Member
+  member_id Int
+  member    Member @relation(fields: [member_id], references: [id], onUpdate: Cascade, onDelete: NoAction)
+
+  @@map("member_token") // Memberitahu Prisma untuk menggunakan nama tabel 'member_token'
+}
+
+// Model untuk tabel 'produk'
+model Produk {
+  id          Int    @id @default(autoincrement())
+  kode_produk String @unique // Kode produk sebaiknya unik
+  nama_produk String
+  harga       Int
+
+  @@map("produk") // Memberitahu Prisma untuk menggunakan nama tabel 'produk'
+}
